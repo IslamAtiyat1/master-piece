@@ -22,6 +22,7 @@
                                             <img src="{{ asset($productItem->productImages[0]->image) }}"
                                                 class="product-sticker" alt="Sticker">
                                         </div>
+
                                     </a>
                                 @endif
                             </div>
