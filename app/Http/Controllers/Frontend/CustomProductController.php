@@ -21,8 +21,6 @@ class CustomProductController extends Controller
 
     {
         $categories = CustomCategory::where('slug', $category_slug)->first();
-        // $customproducts = CustomProduct::all();
-        // 'customproducts',
         return view('frontend.collections.customproduct.view', compact( 'categories'));
     }
 

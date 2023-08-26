@@ -39,4 +39,7 @@ class VerificationController extends Controller
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
+    /*. By placing middleware in the constructor, you can ensure that it's
+     applied to multiple actions in the controller
+    without having to specify it separately for each action*/
 }

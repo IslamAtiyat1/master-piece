@@ -126,7 +126,7 @@ class ProductController extends Controller
                 'slug' => Str::slug($validatedData['slug']),
                 // 'brand' =>$validatedData['brand'],
                 'description' => $validatedData['description'],
-
+                
                 'small_description' => $validatedData['small_description'],
                 'orginal_price' => $validatedData['orginal_price'],
                 'selling_price' => $validatedData['selling_price'],

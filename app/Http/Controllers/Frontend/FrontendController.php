@@ -35,7 +35,7 @@ class FrontendController extends Controller
 
     public function profile(){
 
-return view('frontend.profile');
+        return view('frontend.profile');
 
     }
     public function productView(string $category_slug, string $product_slug)
@@ -67,14 +67,15 @@ public function searchProducts(Request $request)
 {
     if ($request->search) {
         $searchQuery = $request->search;
-
         $searchProducts = Product::where('name', 'LIKE', '%' . $searchQuery . '%')
             ->orWhere('description', 'LIKE', '%' . $searchQuery . '%')
             ->latest()
-            ->paginate(5); // Change this to the number of results you want per page
+            // The latest() method orders the results in descending order based on the product's creation date,
+            ->paginate(9); // Change this to the number of results you want per page
 
         return view('frontend.pages.search', compact('searchProducts', 'searchQuery'));
-    } else {
+    }
+     else {
         return redirect()->back()->with('message', 'Empty Search');
     }
 }
