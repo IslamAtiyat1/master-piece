@@ -16,10 +16,8 @@ public function updated($field)
 {
     // Check if any of the form inputs are empty
     $this->emptyInputs = empty($this->card_number) || empty($this->expire) || empty($this->cvv);
-    dd($this->emptyInputs);
+ //   dd($this->emptyInputs);
 }
-
-
     public function store(Request $request)
     {
         $request->validate([

@@ -34,20 +34,20 @@ class Index extends Component
         $this->dispatchBrowserEvent('close-model');
         // redirect('/admin-panel/category/');
     }
-public function mount(Request $request)
-{
-    $this->search = $request->input('search');
-}
+    public function mount(Request $request)
+    {
+        $this->search = $request->input('search');
+    }
 
-public function updatedSearch()
-{
-    $this->resetPage();
-}
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
 
 
     public function render()
     {
-$products = Product::where('name', 'like', '%' . $this->search . '%')
+                $products = Product::where('name', 'like', '%' . $this->search . '%')
                    ->orderBy('id', 'DESC')
                    ->paginate(10);
 

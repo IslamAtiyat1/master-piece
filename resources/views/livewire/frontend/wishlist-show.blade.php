@@ -8,8 +8,14 @@
                                 <div class="col-md-12 m-auto text-center">
                                     <a
                                         href="{{ url('collections/' . $wishlistItem->product->category->slug . '/' . $wishlistItem->product->slug) }}">
-                                        <img src="{{ $wishlistItem->product->productImages[0]->image }}"
-                                            alt="{{ $wishlistItem->product->name }}" class="img-fluid rounded-start">
+
+                                        <div class="product-mockup-frame ">
+                                            <img src="{{ asset('images/a1.png') }}" class="w-100"
+                                                alt="Mockup Background">
+                                            <!-- Product Sticker Placement -->
+                                            <img src="{{ asset($wishlistItem->product->productImages[0]->image) }}"
+                                                class="product-sticker" alt="{{ $wishlistItem->product->name }}">
+                                        </div>
                                     </a>
                                 </div>
                                 <div class="col-md-12 m-auto text-center">

@@ -165,7 +165,7 @@
                         <label for="card_number">Card Number</label>
                         <input wire:model="card_number" type="text" class="form-control"
                             placeholder="0000 0000 0000 0000" id="card_number" name="card_number"
-                            onkeypress="return isNumeric(event)">
+                            onkeypress="return isNumeric(event)" required>
                         <div class="alert" id="alert-2">
                             @error('card_number')
                                 <span class="text-danger">{{ $message }}</span>
@@ -176,7 +176,7 @@
                         <label for="expire">Exp Date</label>
                         <ion-icon name="calendar-outline"></ion-icon>
                         <input type="date" wire:model="expire" class="form-control" placeholder="MM/YY"
-                            id="expire" name="expire" onkeypress="return isNumeric(event)">
+                            id="expire" name="expire" onkeypress="return isNumeric(event)" required>
                         <div class="alert" id="alert-3">
                             @error('expire')
                                 <span class="text-danger">{{ $message }}</span>
@@ -188,7 +188,8 @@
                                 class="info"></ion-icon></label>
                         <ion-icon name="lock-closed-outline"></ion-icon>
                         <input type="password" wire:model="cvv" class="form-control" placeholder="0000"
-                            id="cvv" name="cvv" maxlength="4" onkeypress="return isNumeric(event)">
+                            id="cvv" name="cvv" maxlength="4" onkeypress="return isNumeric(event)"
+                            required>
                         <div class="alert" id="alert-4">
                             @error('cvv')
                                 <span class="text-danger">{{ $message }}</span>

@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\App;
-
 use App\Models\Color;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
