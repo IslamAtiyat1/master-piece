@@ -2,7 +2,11 @@
 
     <div class="py-3 py-md-5 bg-light">
         <div class="container">
-
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-12">
 

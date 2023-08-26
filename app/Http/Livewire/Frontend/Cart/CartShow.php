@@ -19,36 +19,22 @@ class CartShow extends Component
             if ($cartData->productColor()->where('id', $cartData->product_color_id)->exists()) {
                 $productColor = $cartData->productColor()->where('id', $cartData->product_color_id)->first();
                 if ($productColor->quantity  > $cartData->quantity) {
-
                     $cartData->increment('quantity');
-                    $this->dispatchBrowserEvent('message', [
-                        'text' => 'Quantity Updated',
-                        'type' => 'success',
-                        'status' => 200
-                    ]);
+                    session()->flash('message', 'Quantity Updated');
+        session()->flash('message_type', 'success'); // You can also set a message type if needed
+
                 }else {
-                    $this->dispatchBrowserEvent('message', [
-                        'text' => 'Only ' . $productColor->quantity . ' Quantity available',
-                        'type' => 'success',
-                        'status' => 200,
-                        'quantity' => $productColor->quantity
-                    ]);
+                    session()->flash('message',  'Only ' . $productColor->quantity . ' Quantity available'
+              );
                 }
 
             } else {
                 if ($cartData->product->quantity > $cartData->quantity) {
                     $cartData->increment('quantity');
-                    $this->dispatchBrowserEvent('message', [
-                        'text' => 'Quantity Updated',
-                        'type' => 'success',
-                        'status' => 200
-                    ]);
+                  session()->flash('message', 'Quantity Updated');
+
                 } else {
-                    $this->dispatchBrowserEvent('message', [
-                        'text' => 'Only' . $cartData->product->quantity . 'Quantity available',
-                        'type' => 'success',
-                        'status' => 200
-                    ]);
+                     session()->flash('message', 'Only ' . $cartData->product->quantity . ' Quantity available');
                 }
             }
         } else {
@@ -64,20 +50,15 @@ public function decrementQuantity(int $cartId)
     $cartData = Cart::where('id', $cartId)->where('user_id', auth()->user()->id)->first();
 
     if ($cartData) {
-        if ($cartData->quantity > 1) { // Check if quantity is greater than 1
-            $cartData->decrement('quantity');
-            $this->dispatchBrowserEvent('message', [
-                'text' => 'Quantity Updated',
-                'type' => 'success',
-                'status' => 200
-            ]);
-        } else {
-            $this->dispatchBrowserEvent('message', [
-                'text' => 'Quantity cannot be lower than 1',
-                'type' => 'error',
-                'status' => 400
-            ]);
-        }
+      if ($cartData->quantity > 1) {
+    $cartData->decrement('quantity');
+    session()->flash('message', 'Quantity Updated');
+    session()->flash('message_type', 'success'); // You can also set a message type if needed
+} else {
+    session()->flash('message', 'Quantity cannot be lower than 1');
+    session()->flash('message_type', 'error'); // Set appropriate message type
+}
+
     } else {
         $this->dispatchBrowserEvent('message', [
             'text' => 'Quantity Updated',
@@ -95,12 +76,9 @@ public function decrementQuantity(int $cartId)
         if ($cartRemoveData) {
             $cartRemoveData->delete();
             $this->emit(' item was Added to cart');
+            session()->flash('message', 'Cart Item Removed Successfully');
+            session()->flash('message_type', 'success');
 
-            $this->dispatchBrowserEvent('message', [
-                'text' => 'cart Item Removed Successfully',
-                'type' => 'success',
-                'status' => 200
-            ]);
         } else {
             $this->emit(' item was Added to cart');
 
