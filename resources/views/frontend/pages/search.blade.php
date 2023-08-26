@@ -16,9 +16,12 @@
                                 @if ($productItem->ProductImages->count() > 0)
                                     <a
                                         href="{{ url('/collections/' . $productItem->category->slug . '/' . $productItem->slug) }}">
-
-                                        <img src="{{ asset($productItem->ProductImages[0]->image) }}"
-                                            alt=" {{ $productItem->name }}">
+                                        <div class="product-mockup-frame ">
+                                            <img src="{{ asset('images/a1.png') }}" class="w-100" alt="Mockup Background">
+                                            <!-- Product Sticker Placement -->
+                                            <img src="{{ asset($productItem->productImages[0]->image) }}"
+                                                class="product-sticker" alt="Sticker">
+                                        </div>
                                     </a>
                                 @endif
                             </div>
