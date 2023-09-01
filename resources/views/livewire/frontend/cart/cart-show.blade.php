@@ -131,7 +131,7 @@
                             </span>
                         </h4>
                         <hr>
-                        <a href="{{ url('/checkout') }}" class="bg-dark btn-lg">Checkout</a>
+                        <a href="{{ url('/checkout') }}" class="bg-primary text-dark btn-lg">Checkout</a>
                     </div>
                 </div>
             </div>

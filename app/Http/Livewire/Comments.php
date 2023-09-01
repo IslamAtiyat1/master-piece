@@ -25,7 +25,7 @@ class Comments extends Component
     {
         if (!Auth::check()) {
             // User is not logged in, show alert message
-            Session::flash('alert', 'Please log in to continue');
+              session()->flash('alert', 'Please log in to continue');
             return redirect()->route('login'); // Change 'login' to the actual login route name
         }
 

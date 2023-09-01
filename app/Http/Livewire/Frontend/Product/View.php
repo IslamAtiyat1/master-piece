@@ -67,8 +67,6 @@ class View extends Component
 
     }
 
-
-
     public function addToCart(int $productId)
     {
         if (Auth::check()) {

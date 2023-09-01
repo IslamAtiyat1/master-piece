@@ -17,7 +17,7 @@ class Profile extends Component
 
     public function render()
     {
-$username=User::all();
+        $username=User::all();
         return view('livewire.frontend.user.profile', [
             'customizations' => $this->customizations, 'username' => $this->username
         ]);
